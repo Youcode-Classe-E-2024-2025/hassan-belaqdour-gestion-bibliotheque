@@ -54,11 +54,12 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role'=> 'user',
         ]);
 
         Auth::login($user);
 
-        return redirect()->intended('dashboard'); // Redirigez après l'inscription
+        return redirect()->intended($this->redirectTo()); // Redirigez après l'inscription
     }
 
     public function logout(Request $request)
@@ -70,5 +71,13 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/'); // Redirigez vers la page d'accueil
+    }
+
+    protected function redirectTo()
+    {
+        if (Auth::user()->role === 'admin'){
+            return '/admindash';
+        }
+        return '/userdash';
     }
 }
