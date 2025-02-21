@@ -11,10 +11,14 @@ Route::post('/register', [AuthController::class, 'register']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/dashboard', function () {
-    return view('dashboard'); // Créez une vue "dashboard" si elle n'existe pas.
-})->middleware('auth'); // Protège la route avec le middleware d'authentification.
+Route::get('/userdash',function(){
+    return view('userdash');
+})->middleware('auth');
+
+Route::get('/admindash', function () {
+    return view('admindash');
+})->middleware('auth');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });

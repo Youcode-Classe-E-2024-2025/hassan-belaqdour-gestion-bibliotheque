@@ -9,7 +9,7 @@
 </head>
 
 <body class="bg-gray-100 flex justify-center items-center h-screen">
-    <form action="{{ route('signup') }}" method="POST" class="bg-white p-6 rounded shadow-md w-96">
+    <form action="{{ route('register') }}" method="POST" class="bg-white p-6 rounded shadow-md w-96">
         @csrf
         <h2 class="text-2xl font-bold mb-4">Inscription</h2>
 

@@ -25,7 +25,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard'); // Redirigez vers une page après la connexion
+            return redirect()->intended($this->redirectTo()); // Redirigez vers une page après la connexion
         }
 
         return back()->withErrors([
@@ -59,7 +59,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->intended($this->redirectTo()); // Redirigez après l'inscription
+        return redirect('login'); // Redirigez après l'inscription
     }
 
     public function logout(Request $request)

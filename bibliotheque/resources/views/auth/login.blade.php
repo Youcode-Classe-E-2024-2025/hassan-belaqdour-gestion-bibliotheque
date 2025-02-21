@@ -18,7 +18,7 @@
             required>
 
         <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Se connecter</button>
-        <p class="mt-2 text-center">Pas encore inscrit ? <a href="{{ route('signup') }}"
+        <p class="mt-2 text-center">Pas encore inscrit ? <a href="{{ route('register') }}"
                 class="text-blue-500">S'inscrire</a></p>
     </form>
 </body>
