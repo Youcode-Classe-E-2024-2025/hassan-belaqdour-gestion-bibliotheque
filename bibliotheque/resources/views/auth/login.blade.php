@@ -8,19 +8,47 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-100 flex justify-center items-center h-screen">
-    <form action="{{ route('login') }}" method="POST" class="bg-white p-6 rounded shadow-md w-96">
-        @csrf
-        <h2 class="text-2xl font-bold mb-4">Connexion</h2>
+<body class="h-screen overflow-hidden flex bg-amber-50 text-gray-800">
 
-        <input type="email" name="email" placeholder="Email" class="w-full p-2 border rounded mb-2" required>
-        <input type="password" name="password" placeholder="Mot de passe" class="w-full p-2 border rounded mb-2"
-            required>
+    <!-- Partie Image (50% de la largeur) -->
+    <div class="w-1/2 h-screen">
+        <img src="assets/img/login-image.png" alt="Discothèque avec boule à facettes et foule"
+            class="object-cover h-full w-full">
+    </div>
 
-        <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Se connecter</button>
-        <p class="mt-2 text-center">Pas encore inscrit ? <a href="{{ route('register') }}"
-                class="text-blue-500">S'inscrire</a></p>
-    </form>
+    <!-- Partie Formulaire de Connexion (50% de la largeur) -->
+    <div class="w-1/2 flex items-center justify-center">
+        <div class="bg-orange-100 shadow-md rounded px-8 pt-6 pb-8 mb-4 w-3/4">
+            <h1 class="block text-teal-500 text-2xl font-bold mb-6 text-center">Connexion</h1>
+
+            <form action="{{ route('login') }}" method="POST">
+                @csrf
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email :</label>
+                    <input type="email" id="email" name="email"
+                        class="shadow appearance-none border border-amber-300 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        required>
+                </div>
+                <div class="mb-6">
+                    <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Mot de passe :</label>
+                    <input type="password" id="password" name="password"
+                        class="shadow appearance-none border border-amber-300 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                        required>
+                </div>
+                <button type="submit"
+                    class="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">Se
+                    connecter</button>
+            </form>
+
+            <div class="mt-8 text-center">
+                <p>Pas encore inscrit ?
+                    <a href="{{ route('register') }}"
+                        class="text-teal-500 hover:text-teal-700 font-bold">Inscrivez-vous</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
