@@ -39,4 +39,25 @@ class BookController extends Controller
         $books = Book::all();
         return view('allbooks', ['books' => $books]);
     }
+
+    public function updateBook(Request $request, Book $book)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string|max:250',
+            'author' => 'required|string|max:250',
+            'description' => 'nullable|string',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $book->update([
+            'title' => $request->title,
+            'author' => $request->author,
+            'description' => $request->description,
+        ]);
+
+        return redirect()->route('books.all')->with('success', 'Livre mis à jour avec succès !');
+    }
 }
