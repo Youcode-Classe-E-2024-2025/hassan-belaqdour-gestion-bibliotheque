@@ -28,7 +28,7 @@ class BookController extends Controller
         Book::create([
             'title' => $request->title,
             'author' => $request->author,
-            'description' => $request->description, 
+            'description' => $request->description,
         ]);
 
         return redirect('/allbooks');
