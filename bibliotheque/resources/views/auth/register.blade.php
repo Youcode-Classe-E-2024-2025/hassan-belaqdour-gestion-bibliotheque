@@ -12,7 +12,7 @@
 
     <!-- Partie Image (50% de la largeur) -->
     <div class="w-1/2 h-screen">
-        <img src="assets/img/login-image.png" alt="Discothèque avec boule à facettes et foule"
+        <img src="https://forster-archiv.ch/fileadmin/root_forsterschweiz/Regalsysteme/Bibliothek/Verfahrbare_Regale_Bibliothek_University-of-London.jpg" alt="Discothèque avec boule à facettes et foule"
             class="object-cover h-full w-full">
     </div>
 
