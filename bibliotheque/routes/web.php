@@ -12,9 +12,7 @@ Route::post('/register', [AuthController::class, 'register']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/userdash',function(){
-    return view('userdash');
-})->middleware('auth');
+Route::get('/userdash', [BookController::class, 'showUserBooks'])->middleware('auth')->name('userdash');
 
 Route::get('/admindash', function () {
     return view('admindash');
@@ -36,3 +34,4 @@ Route::get('/allbooks', function () {
 Route::get('/admin/books/{book}/edit', [BookController::class, 'editBook'])->middleware('auth')->name('books.edit');
 Route::put('/admin/books/{book}', [BookController::class, 'updateBook'])->middleware('auth')->name('books.update');
 Route::delete('/admin/books/{book}', [BookController::class, 'destroyBook'])->middleware('auth')->name('books.destroy');
+Route::get('/books/{id}', [BookController::class, 'getBookDetails']);

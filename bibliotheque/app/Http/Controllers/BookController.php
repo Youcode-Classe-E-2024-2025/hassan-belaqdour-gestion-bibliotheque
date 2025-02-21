@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;  // Importez Auth
 
 class BookController extends Controller
 {
@@ -63,13 +64,30 @@ class BookController extends Controller
             'description' => $request->description,
         ]);
 
-        return redirect()->route('books.all');
+        return redirect()->route('books.all')->with('success', 'Livre mis à jour avec succès !');
     }
 
     public function destroyBook(Book $book)
     {
         $book->delete();
 
-        return redirect()->route('books.all');
+        return redirect()->route('books.all')->with('success', 'Livre supprimé avec succès !');
+    }
+
+    public function showUserBooks()
+    {
+        $books = Book::all(); // Récupérez tous les livres (ou filtrez-les si nécessaire)
+        return view('userdash', ['books' => $books]);
+    }
+
+    public function getBookDetails($id)
+    {
+        $book = Book::find($id);
+
+        if (!$book) {
+            return response()->json(['error' => 'Livre non trouvé'], 404);
+        }
+
+        return response()->json($book);
     }
 }
