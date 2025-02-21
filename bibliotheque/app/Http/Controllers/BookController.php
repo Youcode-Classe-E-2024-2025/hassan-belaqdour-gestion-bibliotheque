@@ -40,6 +40,11 @@ class BookController extends Controller
         return view('allbooks', ['books' => $books]);
     }
 
+    public function editBook(Book $book)
+    {
+        return view('editbook', ['book' => $book]);
+    }
+
     public function updateBook(Request $request, Book $book)
     {
         $validator = Validator::make($request->all(), [
@@ -59,5 +64,12 @@ class BookController extends Controller
         ]);
 
         return redirect()->route('books.all')->with('success', 'Livre mis à jour avec succès !');
+    }
+
+    public function destroyBook(Book $book)
+    {
+        $book->delete();
+
+        return redirect()->route('books.all')->with('success', 'Livre supprimé avec succès !');
     }
 }
