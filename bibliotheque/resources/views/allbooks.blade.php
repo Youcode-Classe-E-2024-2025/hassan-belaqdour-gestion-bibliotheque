@@ -13,7 +13,7 @@
         <h1 class="text-3xl font-semibold mb-6">Tous les livres</h1>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            @foreach ($books as $book)  <!-- Utilisez la variable $books passée par le contrôleur -->
+            @foreach (\App\Models\Book::all() as $book)  <!-- Utilisez la variable $books passée par le contrôleur -->
                 <div class="bg-white shadow-md rounded-lg overflow-hidden">
                     <div class="p-4">
                         <h2 class="text-xl font-semibold">{{ $book->title }}</h2>

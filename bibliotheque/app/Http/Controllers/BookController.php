@@ -63,13 +63,13 @@ class BookController extends Controller
             'description' => $request->description,
         ]);
 
-        return redirect()->route('books.all')->with('success', 'Livre mis à jour avec succès !');
+        return redirect()->route('books.all');
     }
 
     public function destroyBook(Book $book)
     {
         $book->delete();
 
-        return redirect()->route('books.all')->with('success', 'Livre supprimé avec succès !');
+        return redirect()->route('books.all');
     }
 }
