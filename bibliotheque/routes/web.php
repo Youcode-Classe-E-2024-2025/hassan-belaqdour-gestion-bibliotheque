@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -21,4 +22,13 @@ Route::get('/admindash', function () {
 
 Route::get('/', function () {
     return view('home');
+});
+
+Route::get('/admin/addbook', [BookController::class, 'showAddBookForm'])->middleware('auth')->name('addbook.show');
+Route::post('/admin/addbook', [BookController::class, 'storeBook'])->middleware('auth')->name('addbook.store');
+
+Route::get('/books', [BookController::class, 'showAllBooks'])->name('books.all');
+
+Route::get('/allbooks', function () {
+    return view('allbooks');
 });
