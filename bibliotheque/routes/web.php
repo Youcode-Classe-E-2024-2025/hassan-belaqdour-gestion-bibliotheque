@@ -32,3 +32,7 @@ Route::get('/books', [BookController::class, 'showAllBooks'])->name('books.all')
 Route::get('/allbooks', function () {
     return view('allbooks');
 });
+
+Route::get('/admin/books/{book}/edit', [BookController::class, 'editBook'])->middleware('auth')->name('books.edit');
+Route::put('/admin/books/{book}', [BookController::class, 'updateBook'])->middleware('auth')->name('books.update');
+Route::delete('/admin/books/{book}', [BookController::class, 'destroyBook'])->middleware('auth')->name('books.destroy');
